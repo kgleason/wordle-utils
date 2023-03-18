@@ -20,6 +20,6 @@ def analyze_wordle():
         guesses.append(resp)
 
     scores = guess_scores(*guesses)
-    print()
+    print(scores)
     for guess in scores:
         print(f"Guess {guess['guess'].upper()} - {get_grade(guess['score'])} {guess['score'] * 100:.1f}% (Best: {guess['best'].upper()})")

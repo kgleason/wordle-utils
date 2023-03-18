@@ -14,7 +14,8 @@ class Exhaustive(GuessingAlgorithm):
     @classmethod
     def guess(cls, remaining_words, possible_guesses=None):
         guess_words = cls._get_possible_guesses(remaining_words, possible_guesses)
-
+        if len(remaining_words) == 0 and len(possible_guesses) != 0:
+            remaining_words = possible_guesses
         # These represent the current guess and what its worst case and average case
         # is for number of remaining words after the guess
         guess = None
@@ -81,6 +82,6 @@ class Exhaustive(GuessingAlgorithm):
 
     @classmethod
     def _get_possible_guesses(cls, remaining_words, possible_guesses):
-        if len(remaining_words) <= 50 and len(possible_guesses) != 0:
+        if len(remaining_words) <= 50 and len(possible_guesses) != 0 and len(remaining_words) == 0:
             return possible_guesses
         return remaining_words
